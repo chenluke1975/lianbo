@@ -9,7 +9,8 @@
 - 擋下 110、119、112 等緊急專線
 - **完全離線**：沒有帳號、沒有伺服器、沒有廣告、沒有追蹤或分析；資料只存在手機裡（WebView localStorage）
 
-授權：[MIT](LICENSE) © 2026 Luke Chen
+授權：[MIT](LICENSE) © 2026 Luke Chen  
+隱私權政策：[PRIVACY.md](PRIVACY.md)
 
 ## 技術架構
 

@@ -2,7 +2,7 @@
   "name": "lianbo",
   "version": "1.0.0",
   "private": true,
-  "description": "連撥 — 忙線自動重撥小幫手（離線、無追蹤）",
+  "description": "\u9023\u64a5 \u2014 \u5fd9\u7dda\u81ea\u52d5\u91cd\u64a5\u5c0f\u5e6b\u624b\uff08\u96e2\u7dda\u3001\u7121\u8ffd\u8e64\uff09",
   "license": "MIT",
   "author": "Luke Chen",
   "type": "module",
@@ -16,7 +16,8 @@
     "typecheck": "tsc --noEmit",
     "cap:sync": "npm run build && cap sync android",
     "android:debug": "npm run cap:sync && cd android && ./gradlew assembleDebug",
-    "android:release": "npm run cap:sync && cd android && ./gradlew assembleRelease"
+    "android:release": "npm run cap:sync && cd android && ./gradlew assembleRelease",
+    "android:bundle": "npm run cap:sync && cd android && ./gradlew bundleRelease"
   },
   "dependencies": {
     "@capacitor-community/keep-awake": "^8.0.1",

@@ -1,6 +1,28 @@
 apply plugin: 'com.android.application'
 
+// Release signing is optional so F-Droid (and other unsigned CI) builds are unchanged.
+// If a keystore.properties file exists, the release build is signed with it.
+def keystoreProperties = new Properties()
+def keystorePropertiesFile = [
+    new File('/workspace/keys/keystore.properties'),
+    rootProject.file('keystore.properties'),
+    rootProject.file('../keystore.properties')
+].find { it.isFile() }
+if (keystorePropertiesFile) {
+    keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
+}
+
 android {
+    if (keystorePropertiesFile) {
+        signingConfigs {
+            release {
+                keyAlias keystoreProperties['keyAlias']
+                keyPassword keystoreProperties['keyPassword']
+                storeFile file(keystoreProperties['storeFile'])
+                storePassword keystoreProperties['storePassword']
+            }
+        }
+    }
     namespace = "io.github.chenluke1975.lianbo"
     compileSdk = rootProject.ext.compileSdkVersion
     defaultConfig {
@@ -26,6 +48,9 @@ android {
             vcsInfo.include = false
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            if (keystorePropertiesFile) {
+                signingConfig signingConfigs.release
+            }
         }
     }
 }
