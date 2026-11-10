@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">連撥</string>
+    <string name="title_activity_main">連撥</string>
+    <string name="package_name">io.github.chenluke1975.lianbo</string>
+    <string name="custom_url_scheme">io.github.chenluke1975.lianbo</string>
+</resources>

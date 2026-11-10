@@ -1,0 +1,22 @@
+<p>Stuck on a busy line trying to book a clinic appointment or reach customer service? Lianbo (連撥, "keep dialing") remembers the number, counts your attempts and runs a countdown between calls so you can keep redialing until someone answers.</p>
+
+<p><b>Features</b></p>
+<ul>
+<li>Every call is placed by you with one tap and handed to your phone's own dialer</li>
+<li>Countdown starts automatically when you return from the call; 3/5/10/15/30 s intervals</li>
+<li>Optional attempt limit (5/10/20/50 or unlimited)</li>
+<li>Log of each attempt with time and outcome (busy, no answer, voicemail, connected)</li>
+<li>Chime and vibration when the countdown ends (can be muted); screen stays on while active</li>
+<li>Remembers your 6 most recent numbers with notes</li>
+<li>Blocks emergency numbers (110, 119, 112, 911…) from being redialed</li>
+</ul>
+
+<p><b>Privacy</b></p>
+<ul>
+<li>Works fully offline, no account, no network use</li>
+<li>No ads, no tracking, no analytics</li>
+<li>No CALL_PHONE permission: the system dialer places the call and you always see it</li>
+<li>All data stays on your device</li>
+</ul>
+
+<p>The interface is in Traditional Chinese (Taiwan). Open source under the MIT license.</p>

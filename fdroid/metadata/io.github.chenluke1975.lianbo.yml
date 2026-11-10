@@ -1,0 +1,43 @@
+# Draft for https://gitlab.com/fdroid/fdroiddata  (copy to metadata/io.github.chenluke1975.lianbo.yml)
+# Replace every chenluke1975 before opening the merge request.
+Categories:
+  - Phone & SMS
+License: MIT
+AuthorName: Luke Chen
+SourceCode: https://github.com/chenluke1975/lianbo
+IssueTracker: https://github.com/chenluke1975/lianbo/issues
+Changelog: https://github.com/chenluke1975/lianbo/releases
+
+AutoName: 連撥
+
+RepoType: git
+Repo: https://github.com/chenluke1975/lianbo.git
+
+Builds:
+  - versionName: 1.0.0
+    versionCode: 1
+    commit: v1.0.0
+    subdir: android/app
+    sudo:
+      - apt-get update
+      - apt-get install -y xz-utils
+      # Capacitor 8 / Vite 8 need Node >= 22; Debian's npm package is too old.
+      - curl -Lo node.tar.xz https://nodejs.org/dist/v22.23.4/node-v22.23.4-linux-x64.tar.xz
+      - echo "1805bcd35e6815559bd2eb97db438d3fdb0eb3a5e6a977b7c1badca76337e9ce node.tar.xz"
+        | sha256sum -c -
+      - tar xJf node.tar.xz --strip-components=1 -C /usr/local
+      - rm node.tar.xz
+    gradle:
+      - yes
+    # npm runs in `build` (after the scanner) so the scanner doesn't trip over
+    # node_modules; the web bundle and Capacitor android libraries come from npm.
+    build:
+      - cd ../..
+      - npm ci
+      - npm run build
+      - npx cap sync android
+
+AutoUpdateMode: Version
+UpdateCheckMode: Tags
+CurrentVersion: 1.0.0
+CurrentVersionCode: 1

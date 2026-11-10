@@ -1,0 +1,96 @@
+@import "tailwindcss";
+
+/* Fonts are bundled locally (Fraunces via @fontsource, Noto Sans CJK from the system).
+   No remote font/CDN requests. */
+@theme {
+  --color-paper: #e8dfd3;
+  --color-card: #fbf7f2;
+  --color-ink: #1c1612;
+  --color-muted: #5e564e;
+  --color-faint: #7a7168;
+  --color-line: #e4d9cc;
+  --color-signal: #b42318;
+  --color-on-signal: #fff8f5;
+  --color-honey: #8a5a12;
+  --color-honey-soft: #f4e7cf;
+  --color-signal-soft: #f8e7e3;
+  --font-sans: "Noto Sans TC", "WenQuanYi Zen Hei", "PingFang TC", "Noto Sans CJK TC", sans-serif;
+  --font-display: "Fraunces", "Noto Sans TC", "WenQuanYi Zen Hei", "Palatino Linotype", serif;
+}
+
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  body {
+    margin: 0;
+    min-height: 100dvh;
+    background: var(--color-paper);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+  }
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+  h1,
+  h2 {
+    text-wrap: balance;
+  }
+  p {
+    text-wrap: pretty;
+  }
+  :focus-visible {
+    outline: 2px solid var(--color-signal);
+    outline-offset: 2px;
+  }
+}
+
+.desk-card {
+  box-shadow: 0 18px 50px color-mix(in srgb, var(--color-ink) 7%, transparent);
+}
+
+.press {
+  transition: transform 160ms ease, opacity 160ms ease;
+}
+.press:active {
+  transform: scale(0.98);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .press:hover {
+    opacity: 0.94;
+  }
+}
+
+@keyframes dial-pulse {
+  0% {
+    box-shadow: 0 0 0 0 color-mix(in srgb, var(--color-signal) 38%, transparent);
+  }
+  100% {
+    box-shadow: 0 0 0 16px transparent;
+  }
+}
+
+.pulse-dial {
+  animation: dial-pulse 1.7s ease-out infinite;
+}
+
+.meter-fill {
+  transform-origin: left center;
+  transition: transform 200ms ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .press,
+  .meter-fill {
+    transition: none;
+  }
+  .press:active {
+    transform: none;
+  }
+  .pulse-dial {
+    animation: none;
+  }
+}

@@ -1,0 +1,1 @@
+First release: redial helper with interval countdown, attempt limit, call log, chime and keep-screen-on. Fully offline, no tracking.
